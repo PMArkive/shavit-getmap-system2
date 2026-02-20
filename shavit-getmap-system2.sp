@@ -398,7 +398,13 @@ void OnMapListDownloaded(bool success, const char[] error, System2HTTPRequest re
     int client = request.Any;
     delete request;
 
-    if (success && response.StatusCode == 200)
+    int status = 0;
+    if (response != null)
+    {
+        status = response.StatusCode;
+    }
+
+    if (success && response != null && status == 200)
     {
         ParseMapList(client);
     }
@@ -406,9 +412,9 @@ void OnMapListDownloaded(bool success, const char[] error, System2HTTPRequest re
     {
         if (client != 0)
         {
-            Shavit_PrintToChat(client, "%sFailed to download map list. Status: %d. Error: %s", gS_ChatStrings.sText, response.StatusCode, error);
+            Shavit_PrintToChat(client, "%sFailed to download map list. Status: %d. Error: %s", gS_ChatStrings.sText, status, error);
         }
-        LogError("GetMap: Failed to download map list. Status: %d. Error: %s", response.StatusCode, error);
+        LogError("GetMap: Failed to download map list. Status: %d. Error: %s", status, error);
     }
 }
 
@@ -596,7 +602,13 @@ void OnSjTieredMapListDownloaded(bool success, const char[] error, System2HTTPRe
     int client = request.Any;
     delete request;
 
-    if (success && response.StatusCode == 200)
+    int status = 0;
+    if (response != null)
+    {
+        status = response.StatusCode;
+    }
+
+    if (success && response != null && status == 200)
     {
         ParseSjTieredMapList(client);
     }
@@ -604,9 +616,9 @@ void OnSjTieredMapListDownloaded(bool success, const char[] error, System2HTTPRe
     {
         if (client != 0)
         {
-            Shavit_PrintToChat(client, "%sFailed to download tiered map list. Status: %d. Error: %s", gS_ChatStrings.sText, response.StatusCode, error);
+            Shavit_PrintToChat(client, "%sFailed to download tiered map list. Status: %d. Error: %s", gS_ChatStrings.sText, status, error);
         }
-        LogError("GetMap: Failed to download tiered map list. Status: %d. Error: %s", response.StatusCode, error);
+        LogError("GetMap: Failed to download tiered map list. Status: %d. Error: %s", status, error);
     }
 }
 
@@ -728,7 +740,13 @@ void OnBrokenMapListDownloaded(bool success, const char[] error, System2HTTPRequ
     int client = request.Any;
     delete request;
 
-    if (success && response.StatusCode == 200)
+    int status = 0;
+    if (response != null)
+    {
+        status = response.StatusCode;
+    }
+
+    if (success && response != null && status == 200)
     {
         ParseBrokenMapList(client);
     }
@@ -736,9 +754,9 @@ void OnBrokenMapListDownloaded(bool success, const char[] error, System2HTTPRequ
     {
         if (client != 0)
         {
-            Shavit_PrintToChat(client, "%sFailed to download broken map list. Status: %d. Error: %s", gS_ChatStrings.sText, response.StatusCode, error);
+            Shavit_PrintToChat(client, "%sFailed to download broken map list. Status: %d. Error: %s", gS_ChatStrings.sText, status, error);
         }
-        LogError("GetMap: Failed to download broken map list. Status: %d. Error: %s", response.StatusCode, error);
+        LogError("GetMap: Failed to download broken map list. Status: %d. Error: %s", status, error);
     }
 }
 
