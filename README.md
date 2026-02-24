@@ -6,8 +6,8 @@ Allows a user with `!map` privileges to download a map while in-game. This versi
 
 This plugin requires the following dependencies to function correctly:
 
-*   **[Shavit's Bhop Timer](https://github.com/shavitush/bhoptimer/releases)**
-*   **[System2 Extension](https://github.com/dordnung/System2/releases)**
+*   **Shavit's Bhop Timer**
+*   **System2 Extension**
 
 ## Installation
 
@@ -16,9 +16,29 @@ This plugin requires the following dependencies to function correctly:
 3.  Install the **System2 Extension**.
 4.  Place `shavit-getmap-system2.smx` into your `addons/sourcemod/plugins` directory (or the main plugins directory).
 5.  Install **7-Zip** on your server.
-    *   **Linux (Debian/Ubuntu)**: `sudo apt-get install p7zip-full`
+    *   **Linux (Debian/Ubuntu)**:  
+        `sudo apt-get install p7zip-full`
     *   Ensure `7z` is in your PATH or configure the path in the cvar.
 6.  Restart the server or load the plugin manually.
+
+---
+
+## Pterodactyl Support
+
+If you are hosting your server on **Pterodactyl** and encounter issues with 7-Zip or missing dependencies, you can use the following Docker image:
+
+```
+docker.io/seenkid/steamcmd:custom
+```
+
+This image includes the required environment for the plugin to function properly.
+
+✔ The plugin will work without additional manual setup.  
+✔ Downloaded and decompressed maps will be written directly into the mounted server folder.
+
+Make sure your server mount is correctly configured so that the `maps/` directory is writable.
+
+---
 
 ## ConVars
 
@@ -32,6 +52,8 @@ This plugin requires the following dependencies to function correctly:
 *   `gm_map_list_url` - URL to the plain text file containing the list of available maps. (default: `https://main.fastdl.me/maps_index.html.txt`)
 *   `gm_sjtiered_map_list_url` - URL to the plain text file containing the list of available tiered maps. (default: `https://lodgegaming.com.tr/sjtieredmaps.txt`)
 
+---
+
 ## Commands
 
 *   `sm_getmap <mapname>` - Download a map.
@@ -39,3 +61,9 @@ This plugin requires the following dependencies to function correctly:
 *   `sm_findmap <partial name>` - Search for a map.
 *   `sm_delmap <mapname>` - Delete a map.
 *   `sm_sjtieredmaps` - List available tiered maps from SourceJump.
+
+---
+
+## Credits
+
+Special thanks to https://github.com/seenkid for providing the custom SteamCMD Docker image used for Pterodactyl compatibility.
